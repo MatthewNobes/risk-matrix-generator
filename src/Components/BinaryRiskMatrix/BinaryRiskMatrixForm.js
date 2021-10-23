@@ -211,7 +211,9 @@ export default function BinaryRiskMatrixForm() {
                     <input type='checkbox' id='Q10' value={Q10} onChange={() => handleChange(Q10, appendQ10)}/>
                     <label for='Q10'>Q10: Will the asset have a significant cost of repair or replacement?</label>
                 </div>
-                <button type="submit">Submit</button>
+                <div className="BinaryRiskMatrixForm-Submit">
+                    <button className="BinaryRiskMatrixForm-SubmitButton" type="submit">Submit</button>
+                </div>
             </form>
 
             <div className="BinaryRiskMatrixResults">
