@@ -184,7 +184,7 @@ export default function BinaryRiskMatrixForm() {
 
                 <div className="BinaryRiskMatrixForm-CheckboxBlock">
                     <input type='checkbox' id='Q5' value={Q5} onChange={() => handleChange(Q5, appendQ5)}/>
-                    <label for='Q5'>Q5: is the vulnerability always present in the asset?</label>
+                    <label for='Q5'>Q5: Is the vulnerability always present in the asset?</label>
                 </div>
 
                 <div className="BinaryRiskMatrixForm-CheckboxBlock">
@@ -217,9 +217,24 @@ export default function BinaryRiskMatrixForm() {
             </form>
 
             <div className="BinaryRiskMatrixResults">
-                <h2 className="BinaryRiskMatrixResults-Measurement">Risk: {risk}</h2>
-                <h2 className="BinaryRiskMatrixResults-Measurement">Likelihood: {likelihood}</h2>
-                <h2 className="BinaryRiskMatrixResults-Measurement">Impact: {impact}</h2>
+                <h2 
+                    className="BinaryRiskMatrixResults-Measurement"
+                    style={{color: risk === 'Low' ? 'Green' : risk === 'Medium' ? 'Orange' : 'Red'}}
+                >
+                    Risk: {risk}
+                </h2>
+                <h2 
+                    className="BinaryRiskMatrixResults-Measurement"
+                    style={{color: likelihood === 'Low' ? 'Green' : likelihood === 'Medium' ? 'Orange' : 'Red'}}
+                >
+                    Likelihood: {likelihood}
+                </h2>
+                <h2 
+                    className="BinaryRiskMatrixResults-Measurement"
+                    style={{color: impact === 'Low' ? 'Green' : impact === 'Medium' ? 'Orange' : 'Red'}}
+                >
+                    Impact: {impact}
+                </h2>
             </div>
             
         </div>
