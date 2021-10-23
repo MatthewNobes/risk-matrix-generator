@@ -160,7 +160,7 @@ export default function BinaryRiskMatrixForm() {
     }
 
     return (
-        <div >
+        <div className="BinaryRiskMatrix">
             <form className="BinaryRiskMatrixForm" onSubmit={(e) => handleSubmit(e)}> 
                 <div className="BinaryRiskMatrixForm-CheckboxBlock">
                     <input type='checkbox' id='Q1' value={Q1} onChange={() => handleChange(Q1, appendQ1)}/>
@@ -214,10 +214,12 @@ export default function BinaryRiskMatrixForm() {
                 <button type="submit">Submit</button>
             </form>
 
-
-            <h2>Risk: {risk}</h2>
-            <h2>Likelihood: {likelihood}</h2>
-            <h2>Impact: {impact}</h2>
+            <div className="BinaryRiskMatrixResults">
+                <h2 className="BinaryRiskMatrixResults-Measurement">Risk: {risk}</h2>
+                <h2 className="BinaryRiskMatrixResults-Measurement">Likelihood: {likelihood}</h2>
+                <h2 className="BinaryRiskMatrixResults-Measurement">Impact: {impact}</h2>
+            </div>
+            
         </div>
     );
   }
