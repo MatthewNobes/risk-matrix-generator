@@ -174,7 +174,7 @@ export default function BinaryRiskMatrixForm() {
 
                 <div className="BinaryRiskMatrixForm-CheckboxBlock">
                     <input type='checkbox' id='Q3' value={Q3} onChange={() => handleChange(Q3, appendQ3)}/>
-                    <label for='Q3'>Q3: is the asset undefended?</label>
+                    <label for='Q3'>Q3: Is the asset undefended?</label>
                 </div>
 
                 <div className="BinaryRiskMatrixForm-CheckboxBlock">
