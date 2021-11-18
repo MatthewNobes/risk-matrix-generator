@@ -1,6 +1,10 @@
 import { useState } from 'react';
 import '../../css/App.css';
 
+import calculateImpact from './Impact';
+import calculateLikelihood from './Likelihood';
+import calculateRisk from './Risk';
+
 export default function BinaryRiskMatrixForm() {
     
     const [Q1, appendQ1] = useState(false);
@@ -26,8 +30,9 @@ export default function BinaryRiskMatrixForm() {
         e.preventDefault();
         debugger;
 
-        const likelihood = calculateLikelihood();
-        const impact = calculateImpact();
+        const values = [Q1, Q2, Q3, Q4, Q5, Q6, Q7, Q8, Q9, Q10];
+        const likelihood = calculateLikelihood(values);
+        const impact = calculateImpact(values);
         const risk = calculateRisk(likelihood, impact);
 
         appendRisk(risk);
@@ -35,130 +40,6 @@ export default function BinaryRiskMatrixForm() {
         appendImpact(impact);
     }
     
-    const calculateRisk = (threatLikelihood, threatImpact) => {
-        if (threatImpact === threatLikelihood) {
-            return threatLikelihood;
-        } else {
-            if ((threatLikelihood === 'High' && threatImpact === 'Medium') || (threatLikelihood === 'Medium' && threatImpact === 'High')) {
-                return 'High';
-            } else {
-                if ((threatLikelihood === 'High' && threatImpact === 'Low') || (threatLikelihood === 'Low' && threatImpact === 'Medium')) {
-                    return 'Medium';
-                } else {
-                    return 'Low';
-                }
-            }
-        }
-    }
-
-    const calculateLikelihood = () => {
-        const threatScore = calculateThreatScope();
-        const protectionWeakness = calculateProtectionWeakness(threatScore);
-        const attackEfficacy = calculateAttackEfficacy(protectionWeakness);
-        const occurrence = calculateOccurrence(attackEfficacy);
-
-        const threatLikelihood = occurrence;
-        return threatLikelihood;
-    }
-
-    const calculateThreatScope = () => {
-        if (Q1 === true && Q2 === true) {
-            return 'High'
-        } else {
-            if (Q1 === true || Q2 === true) {
-                return 'Medium';
-            } else {
-                return 'Low'
-            }
-        }
-    }
-
-    const calculateProtectionWeakness = (threatScore) => {
-        if (Q3 === true && Q4 === true) {
-            if (threatScore === 'Low'){
-                return 'Medium';
-            } else {
-                return 'High';
-            }
-        } else {
-            if (Q3 === true || Q4 === true) {
-                return threatScore;
-            } else {
-                if (threatScore === 'High') {
-                    return 'Medium'
-                } else {
-                    return 'Low'
-                }
-            }
-        }
-    }
-
-    const calculateAttackEfficacy = (protectionWeakness) => {
-        return protectionWeakness;
-    }
-
-    const calculateOccurrence = (attackEfficacy) => {
-        if (Q5 === true && Q6 === true) {
-            if (attackEfficacy === 'Low'){
-                return 'Medium';
-            } else {
-                return 'High';
-            }
-        } else {
-            if (Q5 === true || Q6 === true) {
-                return attackEfficacy;
-            } else {
-                if (attackEfficacy === 'High') {
-                    return 'Medium'
-                } else {
-                    return 'Low'
-                }
-            }
-        }
-    }
-
-    const calculateImpact = () => {
-        const harmCapacity = calculateHarmCapacity();
-        const impactValuation = calculateImpactValidation(harmCapacity);
-        
-        const threatImpact = impactValuation;
-        return threatImpact;
-    }
-
-    const calculateHarmCapacity = () => {
-        if (Q7 === true && Q8 === true){
-            return 'High'
-        } else {
-            if (Q7 === true || Q8 === true) {
-                return 'Medium'
-            } else {
-                return 'Low'
-            }
-        }
-    }
-
-    const calculateImpactValidation = (harmCapacity) => {
-        if (Q9 === false && Q10 === false) {
-            if (harmCapacity === 'High') {
-                return 'Medium';
-            } else {
-                return 'Low'
-            }
-        } else {
-            if (Q9 === true && Q10 === true){
-                if (harmCapacity === 'Low') {
-                    return 'Medium';
-                } else {
-                    return 'High'
-                }
-            } else {
-                if (Q9 === true || Q10 === true) {
-                    return harmCapacity;
-                }
-            }
-        }
-    }
-
     return (
         <div className="BinaryRiskMatrix">
             <form className="BinaryRiskMatrixForm" onSubmit={(e) => handleSubmit(e)}> 
