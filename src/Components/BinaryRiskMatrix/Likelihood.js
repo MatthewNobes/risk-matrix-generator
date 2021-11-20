@@ -10,8 +10,8 @@ const calculateLikelihood = (values) => {
     const occurrence = calculateOccurrence(attackEfficiency, values[4], values[5]);
 
     const threatLikelihood = occurrence;
-    //const likelihoodResults = [threatScore, protectionWeakness, attackEfficiency, occurrence, threatLikelihood]; For future use.
-    return threatLikelihood;
+    const likelihoodResults = [threatScore, protectionWeakness, attackEfficiency, occurrence, threatLikelihood]; 
+    return likelihoodResults;
 }
 
 /**

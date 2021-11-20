@@ -25,6 +25,11 @@ export default function BinaryRiskMatrixForm() {
     const [harmCapacity, appendHarmCapacity] = useState('Low');
     const [impactValuation, appendImpactValuation] = useState('Low');
 
+    const [threatScore, appendThreatScore] = useState('Low');
+    const [protectionWeakness, appendProtectionWeakness] = useState('Low');
+    const [attackEfficiency, appendAttackEfficiency] = useState('Low');
+    const [occurrence, appendOccurrence] = useState('Low');
+
     const handleChange = (value, appendFn) => {
         appendFn(!value);   
     }
@@ -34,15 +39,20 @@ export default function BinaryRiskMatrixForm() {
         debugger;
 
         const values = [Q1, Q2, Q3, Q4, Q5, Q6, Q7, Q8, Q9, Q10];
-        const likelihood = calculateLikelihood(values);
+        const likelihoodResults = calculateLikelihood(values);
         const impactResults = calculateImpact(values);
         const risk = calculateRisk(likelihood, impactResults[2]);
 
         appendHarmCapacity(impactResults[0]);
         appendImpactValuation(impactResults[1]);
 
+        appendThreatScore(likelihoodResults[0]);
+        appendProtectionWeakness(likelihoodResults[1]);
+        appendAttackEfficiency(likelihoodResults[2]);
+        appendOccurrence(likelihoodResults[3]);
+
         appendRisk(risk);
-        appendLikelihood(likelihood);
+        appendLikelihood(likelihoodResults[4]);
         appendImpact(impactResults[2]);
     }
     
@@ -118,6 +128,33 @@ export default function BinaryRiskMatrixForm() {
                 >
                     Likelihood: {likelihood}
                 </h2>
+                <ul>
+                    <h3 
+                        className="BinaryRiskMatrixResults-Measurement"
+                        style={{color: threatScore === 'Low' ? 'Green' : threatScore === 'Medium' ? 'Orange' : 'Red'}}
+                    >
+                        Threat Score: {threatScore}
+                    </h3>
+                    <h3 
+                        className="BinaryRiskMatrixResults-Measurement"
+                        style={{color: protectionWeakness === 'Low' ? 'Green' : protectionWeakness === 'Medium' ? 'Orange' : 'Red'}}
+                    >
+                        Protection Weakness: {protectionWeakness}
+                    </h3>
+                    <h3 
+                        className="BinaryRiskMatrixResults-Measurement"
+                        style={{color: attackEfficiency === 'Low' ? 'Green' : attackEfficiency === 'Medium' ? 'Orange' : 'Red'}}
+                    >
+                        Attack Efficiency: {attackEfficiency}
+                    </h3>
+                    <h3 
+                        className="BinaryRiskMatrixResults-Measurement"
+                        style={{color: occurrence === 'Low' ? 'Green' : occurrence === 'Medium' ? 'Orange' : 'Red'}}
+                    >
+                        Occurrence: {occurrence}
+                    </h3>
+                </ul>
+
                 <h2 
                     className="BinaryRiskMatrixResults-Measurement"
                     style={{color: impact === 'Low' ? 'Green' : impact === 'Medium' ? 'Orange' : 'Red'}}
