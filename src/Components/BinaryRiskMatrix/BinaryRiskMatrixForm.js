@@ -18,9 +18,12 @@ export default function BinaryRiskMatrixForm() {
     const [Q9, appendQ9] = useState(false);
     const [Q10, appendQ10] = useState(false);
 
-    const [risk, appendRisk] = useState('Low')
-    const [likelihood, appendLikelihood] = useState('Low')
-    const [impact, appendImpact] = useState('Low')
+    const [risk, appendRisk] = useState('Low');
+    const [likelihood, appendLikelihood] = useState('Low');
+    const [impact, appendImpact] = useState('Low');
+
+    const [harmCapacity, appendHarmCapacity] = useState('Low');
+    const [impactValuation, appendImpactValuation] = useState('Low');
 
     const handleChange = (value, appendFn) => {
         appendFn(!value);   
@@ -32,12 +35,15 @@ export default function BinaryRiskMatrixForm() {
 
         const values = [Q1, Q2, Q3, Q4, Q5, Q6, Q7, Q8, Q9, Q10];
         const likelihood = calculateLikelihood(values);
-        const impact = calculateImpact(values);
-        const risk = calculateRisk(likelihood, impact);
+        const impactResults = calculateImpact(values);
+        const risk = calculateRisk(likelihood, impactResults[2]);
+
+        appendHarmCapacity(impactResults[0]);
+        appendImpactValuation(impactResults[1]);
 
         appendRisk(risk);
         appendLikelihood(likelihood);
-        appendImpact(impact);
+        appendImpact(impactResults[2]);
     }
     
     return (
@@ -104,6 +110,8 @@ export default function BinaryRiskMatrixForm() {
                 >
                     Risk: {risk}
                 </h2>
+                
+
                 <h2 
                     className="BinaryRiskMatrixResults-Measurement"
                     style={{color: likelihood === 'Low' ? 'Green' : likelihood === 'Medium' ? 'Orange' : 'Red'}}
@@ -116,6 +124,20 @@ export default function BinaryRiskMatrixForm() {
                 >
                     Impact: {impact}
                 </h2>
+                <ul>
+                    <h3 
+                        className="BinaryRiskMatrixResults-Measurement"
+                        style={{color: harmCapacity === 'Low' ? 'Green' : harmCapacity === 'Medium' ? 'Orange' : 'Red'}}
+                    >
+                        Harm Capacity: {harmCapacity}
+                    </h3>
+                    <h3 
+                        className="BinaryRiskMatrixResults-Measurement"
+                        style={{color: impactValuation === 'Low' ? 'Green' : impactValuation === 'Medium' ? 'Orange' : 'Red'}}
+                    >
+                        Impact Valuation: {impactValuation}
+                    </h3>
+                </ul>
             </div>
             
         </div>

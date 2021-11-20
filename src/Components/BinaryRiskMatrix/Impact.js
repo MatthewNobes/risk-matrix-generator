@@ -8,8 +8,8 @@ const calculateImpact = (values) => {
     const impactValuation = calculateImpactValidation(harmCapacity, values[8], values[9]);
     
     const threatImpact = impactValuation;
-    //const impactResults = [harmCapacity, impactValuation, threatImpact]; For future use.
-    return threatImpact;
+    const impactResults = [harmCapacity, impactValuation, threatImpact]; 
+    return impactResults;
 }
 
 /**
