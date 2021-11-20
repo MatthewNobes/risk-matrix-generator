@@ -11,7 +11,7 @@ const calculateRisk = (threatLikelihood, threatImpact) => {
         if ((threatLikelihood === 'High' && threatImpact === 'Medium') || (threatLikelihood === 'Medium' && threatImpact === 'High')) {
             return 'High';
         } else {
-            if ((threatLikelihood === 'High' && threatImpact === 'Low') || (threatLikelihood === 'Low' && threatImpact === 'Medium')) {
+            if ((threatLikelihood === 'High' && threatImpact === 'Low') || (threatLikelihood === 'Low' && threatImpact === 'Medium') || (threatLikelihood === 'Low' && threatImpact === 'High')){
                 return 'Medium';
             } else {
                 return 'Low';
