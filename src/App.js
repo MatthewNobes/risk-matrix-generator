@@ -1,13 +1,12 @@
-import './css/App.css';
+import "./css/App.css";
+import BinaryRiskMatrix from "./features/BinaryRiskMatrix";
 
-import BinaryRiskMatrix from './Components/BinaryRiskMatrix/BinaryRiskMatrix';
-
-function App() {
+const App = () => {
   return (
     <div className="App">
       <BinaryRiskMatrix />
     </div>
   );
-}
+};
 
 export default App;

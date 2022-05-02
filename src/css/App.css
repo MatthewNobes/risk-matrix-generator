@@ -10,8 +10,6 @@
 
 .BinaryRiskMatrixForm {
   text-align: left;
-  
-
 }
 
 .BinaryRiskMatrixForm-CheckboxBlock {
@@ -25,13 +23,8 @@
 .BinaryRiskMatrixForm-SubmitButton {
   height: 2em;
   width: 6em;
-  
 }
 
 .BinaryRiskMatrixResults {
   text-align: left;
-}
-
-.BinaryRiskMatrixResults-Measurement {
-
 }
