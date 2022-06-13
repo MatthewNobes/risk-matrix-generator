@@ -5,8 +5,6 @@
  * @returns {string} The overall risk.
  */
 const calculateRisk = (threatLikelihood, threatImpact) => {
-  console.log("impact", threatImpact);
-  console.log("likelihood", threatLikelihood);
   if (threatImpact === threatLikelihood) {
     return threatLikelihood;
   } else {
@@ -21,7 +19,6 @@ const calculateRisk = (threatLikelihood, threatImpact) => {
         (threatLikelihood === "Low" && threatImpact === "Medium") ||
         (threatLikelihood === "Low" && threatImpact === "High")
       ) {
-        console.log("medium");
         return "Medium";
       } else {
         return "Low";
