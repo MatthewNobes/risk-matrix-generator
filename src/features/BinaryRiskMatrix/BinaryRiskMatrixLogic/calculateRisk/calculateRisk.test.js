@@ -1,6 +1,5 @@
 import { calculateRisk } from "./calculateRisk";
 
-//Testing where both inputs are equal
 test("takes in a likelihood of High, impact of High and returns High for its risk", () => {
   const likelihood = "High";
   const impact = "High";
@@ -19,7 +18,6 @@ test("takes in a likelihood of Low, impact of Low and returns Low for its risk",
   expect(calculateRisk(likelihood, impact)).toBe("Low");
 });
 
-//Testing all other possibilities
 test("takes in a likelihood of Low, impact of Medium and returns Medium for its risk", () => {
   const likelihood = "Low";
   const impact = "Medium";
