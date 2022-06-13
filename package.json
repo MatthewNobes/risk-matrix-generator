@@ -1,7 +1,9 @@
 {
   "homepage": "https://matthewnobes.github.io/risk-matrix-generator/",
   "name": "risk-matrix-generator",
-  "version": "0.1.0",
+  "author": "Matthew Nobes",
+  "version": "0.2.0",
+  "license": "MIT",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.14.1",
