@@ -35,12 +35,10 @@ export const BinaryRiskMatrixForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    debugger;
 
     const values = [Q1, Q2, Q3, Q4, Q5, Q6, Q7, Q8, Q9, Q10];
     const likelihoodResults = calculateLikelihood(values);
     const impactResults = calculateImpact(values);
-    const risk = calculateRisk(likelihood, impactResults[2]);
 
     appendHarmCapacity(impactResults[0]);
     appendImpactValuation(impactResults[1]);
@@ -50,9 +48,11 @@ export const BinaryRiskMatrixForm = () => {
     appendAttackEfficiency(likelihoodResults[2]);
     appendOccurrence(likelihoodResults[3]);
 
-    appendRisk(risk);
     appendLikelihood(likelihoodResults[4]);
     appendImpact(impactResults[2]);
+
+    const risk = calculateRisk(likelihoodResults[4], impactResults[2]);
+    appendRisk(risk);
   };
 
   return (
