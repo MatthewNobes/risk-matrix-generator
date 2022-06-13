@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.css": "/risk-matrix-generator/static/css/main.2d1eba0a.chunk.css",
-    "main.js": "/risk-matrix-generator/static/js/main.8c3f4b2d.chunk.js",
-    "main.js.map": "/risk-matrix-generator/static/js/main.8c3f4b2d.chunk.js.map",
+    "main.css": "/risk-matrix-generator/static/css/main.51afa435.chunk.css",
+    "main.js": "/risk-matrix-generator/static/js/main.8f828614.chunk.js",
+    "main.js.map": "/risk-matrix-generator/static/js/main.8f828614.chunk.js.map",
     "runtime-main.js": "/risk-matrix-generator/static/js/runtime-main.efd58e12.js",
     "runtime-main.js.map": "/risk-matrix-generator/static/js/runtime-main.efd58e12.js.map",
     "static/js/2.6b8bfd5b.chunk.js": "/risk-matrix-generator/static/js/2.6b8bfd5b.chunk.js",
@@ -10,13 +10,13 @@
     "static/js/3.df457575.chunk.js": "/risk-matrix-generator/static/js/3.df457575.chunk.js",
     "static/js/3.df457575.chunk.js.map": "/risk-matrix-generator/static/js/3.df457575.chunk.js.map",
     "index.html": "/risk-matrix-generator/index.html",
-    "static/css/main.2d1eba0a.chunk.css.map": "/risk-matrix-generator/static/css/main.2d1eba0a.chunk.css.map",
+    "static/css/main.51afa435.chunk.css.map": "/risk-matrix-generator/static/css/main.51afa435.chunk.css.map",
     "static/js/2.6b8bfd5b.chunk.js.LICENSE.txt": "/risk-matrix-generator/static/js/2.6b8bfd5b.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.efd58e12.js",
     "static/js/2.6b8bfd5b.chunk.js",
-    "static/css/main.2d1eba0a.chunk.css",
-    "static/js/main.8c3f4b2d.chunk.js"
+    "static/css/main.51afa435.chunk.css",
+    "static/js/main.8f828614.chunk.js"
   ]
 }
