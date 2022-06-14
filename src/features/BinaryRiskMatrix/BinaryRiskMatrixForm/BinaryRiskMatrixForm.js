@@ -1,53 +1,7 @@
 import { useState } from "react";
 import "../../../css/App.css";
 
-import calculateImpact from "../BinaryRiskMatrixLogic/calculateImpact";
-import calculateLikelihood from "../BinaryRiskMatrixLogic/calculateLikelihood";
-import calculateRisk from "../BinaryRiskMatrixLogic/calculateRisk";
-
-import { calculateHarmCapacity } from "../BinaryRiskMatrixLogic/calculateImpact/calculateHarmCapacity/calculateHarmCapacity";
-import { calculateImpactValuation } from "../BinaryRiskMatrixLogic/calculateImpact/calculateImpactValuation/calculateImpactValuation";
-import { calculateThreatScope } from "../BinaryRiskMatrixLogic/calculateLikelihood/calculateThreatScope/calculateThreatScope";
-import { calculateProtectionWeakness } from "../BinaryRiskMatrixLogic/calculateLikelihood/calculateProtectionWeakness/calculateProtectionWeakness";
-import { calculateAttackEfficiency } from "../BinaryRiskMatrixLogic/calculateLikelihood/calculateAttackEfficiency/calculateAttackEfficiency";
-import { calculateOccurrence } from "../BinaryRiskMatrixLogic/calculateLikelihood/calculateOccurrence/calculateOccurrence";
-
-const calculateValues = (userResponses) => {
-  const values = {};
-
-  values.harmCapacity = calculateHarmCapacity(
-    userResponses[6],
-    userResponses[7]
-  );
-  values.impactValuation = calculateImpactValuation(
-    values.harmCapacity,
-    userResponses[8],
-    userResponses[9]
-  );
-  values.threatImpact = calculateImpact(values.impactValuation);
-
-  values.threatScore = calculateThreatScope(userResponses[0], userResponses[1]);
-  values.protectionWeakness = calculateProtectionWeakness(
-    values.threatScore,
-    userResponses[2],
-    userResponses[3]
-  );
-  values.attackEfficiency = calculateAttackEfficiency(
-    values.protectionWeakness
-  );
-  values.occurrence = calculateOccurrence(
-    values.attackEfficiency,
-    userResponses[4],
-    userResponses[5]
-  );
-  values.threatLikelihood = calculateLikelihood(values.occurrence);
-
-  values.threatRisk = calculateRisk(
-    values.threatLikelihood,
-    values.threatImpact
-  );
-  return values;
-};
+import calculateValues from "../calculateValues";
 
 export const BinaryRiskMatrixForm = () => {
   const [Q1, appendQ1] = useState(false);
