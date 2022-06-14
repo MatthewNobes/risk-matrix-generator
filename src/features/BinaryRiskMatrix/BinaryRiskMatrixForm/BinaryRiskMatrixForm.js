@@ -1,9 +1,7 @@
 import { useState } from "react";
 import "../../../css/App.css";
 
-import calculateValues from "../calculateValues";
-
-export const BinaryRiskMatrixForm = () => {
+export const BinaryRiskMatrixForm = (props) => {
   const [Q1, appendQ1] = useState(false);
   const [Q2, appendQ2] = useState(false);
   const [Q3, appendQ3] = useState(false);
@@ -15,18 +13,6 @@ export const BinaryRiskMatrixForm = () => {
   const [Q9, appendQ9] = useState(false);
   const [Q10, appendQ10] = useState(false);
 
-  const [risk, appendRisk] = useState("Low");
-  const [likelihood, appendLikelihood] = useState("Low");
-  const [impact, appendImpact] = useState("Low");
-
-  const [harmCapacity, appendHarmCapacity] = useState("Low");
-  const [impactValuation, appendImpactValuation] = useState("Low");
-
-  const [threatScore, appendThreatScore] = useState("Low");
-  const [protectionWeakness, appendProtectionWeakness] = useState("Low");
-  const [attackEfficiency, appendAttackEfficiency] = useState("Low");
-  const [occurrence, appendOccurrence] = useState("Low");
-
   const handleChange = (value, appendFn) => {
     appendFn(!value);
   };
@@ -34,19 +20,8 @@ export const BinaryRiskMatrixForm = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    const values = [Q1, Q2, Q3, Q4, Q5, Q6, Q7, Q8, Q9, Q10];
-
-    const calculatedValues = calculateValues(values);
-
-    appendHarmCapacity(calculatedValues.harmCapacity);
-    appendImpactValuation(calculatedValues.impactValuation);
-    appendThreatScore(calculatedValues.threatScore);
-    appendProtectionWeakness(calculatedValues.protectionWeakness);
-    appendAttackEfficiency(calculatedValues.attackEfficiency);
-    appendOccurrence(calculatedValues.occurrence);
-    appendLikelihood(calculatedValues.threatLikelihood);
-    appendImpact(calculatedValues.threatImpact);
-    appendRisk(calculatedValues.threatRisk);
+    const userResponses = [Q1, Q2, Q3, Q4, Q5, Q6, Q7, Q8, Q9, Q10];
+    props.onSubmitFn(userResponses);
   };
 
   return (
@@ -179,128 +154,6 @@ export const BinaryRiskMatrixForm = () => {
           </button>
         </div>
       </form>
-
-      <div className="BinaryRiskMatrixResults">
-        <h2
-          className="BinaryRiskMatrixResults-Measurement"
-          style={{
-            color:
-              risk === "Low" ? "Green" : risk === "Medium" ? "Orange" : "Red",
-          }}
-        >
-          Risk: {risk}
-        </h2>
-
-        <h2
-          className="BinaryRiskMatrixResults-Measurement"
-          style={{
-            color:
-              likelihood === "Low"
-                ? "Green"
-                : likelihood === "Medium"
-                ? "Orange"
-                : "Red",
-          }}
-        >
-          Likelihood: {likelihood}
-        </h2>
-        <ul>
-          <h3
-            className="BinaryRiskMatrixResults-Measurement"
-            style={{
-              color:
-                threatScore === "Low"
-                  ? "Green"
-                  : threatScore === "Medium"
-                  ? "Orange"
-                  : "Red",
-            }}
-          >
-            Threat Score: {threatScore}
-          </h3>
-          <h3
-            className="BinaryRiskMatrixResults-Measurement"
-            style={{
-              color:
-                protectionWeakness === "Low"
-                  ? "Green"
-                  : protectionWeakness === "Medium"
-                  ? "Orange"
-                  : "Red",
-            }}
-          >
-            Protection Weakness: {protectionWeakness}
-          </h3>
-          <h3
-            className="BinaryRiskMatrixResults-Measurement"
-            style={{
-              color:
-                attackEfficiency === "Low"
-                  ? "Green"
-                  : attackEfficiency === "Medium"
-                  ? "Orange"
-                  : "Red",
-            }}
-          >
-            Attack Efficiency: {attackEfficiency}
-          </h3>
-          <h3
-            className="BinaryRiskMatrixResults-Measurement"
-            style={{
-              color:
-                occurrence === "Low"
-                  ? "Green"
-                  : occurrence === "Medium"
-                  ? "Orange"
-                  : "Red",
-            }}
-          >
-            Occurrence: {occurrence}
-          </h3>
-        </ul>
-
-        <h2
-          className="BinaryRiskMatrixResults-Measurement"
-          style={{
-            color:
-              impact === "Low"
-                ? "Green"
-                : impact === "Medium"
-                ? "Orange"
-                : "Red",
-          }}
-        >
-          Impact: {impact}
-        </h2>
-        <ul>
-          <h3
-            className="BinaryRiskMatrixResults-Measurement"
-            style={{
-              color:
-                harmCapacity === "Low"
-                  ? "Green"
-                  : harmCapacity === "Medium"
-                  ? "Orange"
-                  : "Red",
-            }}
-          >
-            Harm Capacity: {harmCapacity}
-          </h3>
-          <h3
-            className="BinaryRiskMatrixResults-Measurement"
-            style={{
-              color:
-                impactValuation === "Low"
-                  ? "Green"
-                  : impactValuation === "Medium"
-                  ? "Orange"
-                  : "Red",
-            }}
-          >
-            Impact Valuation: {impactValuation}
-          </h3>
-        </ul>
-      </div>
     </div>
   );
 };
