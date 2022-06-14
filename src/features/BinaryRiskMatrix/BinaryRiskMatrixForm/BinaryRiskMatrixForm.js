@@ -5,6 +5,26 @@ import calculateImpact from "../BinaryRiskMatrixLogic/calculateImpact";
 import calculateLikelihood from "../BinaryRiskMatrixLogic/calculateLikelihood";
 import calculateRisk from "../BinaryRiskMatrixLogic/calculateRisk";
 
+import { calculateHarmCapacity } from "../BinaryRiskMatrixLogic/calculateImpact/calculateHarmCapacity/calculateHarmCapacity";
+import { calculateImpactValuation } from "../BinaryRiskMatrixLogic/calculateImpact/calculateImpactValuation/calculateImpactValuation";
+
+const calculateValues = (userResponses) => {
+  const values = {};
+
+  values.harmCapacity = calculateHarmCapacity(
+    userResponses[6],
+    userResponses[7]
+  );
+  values.impactValuation = calculateImpactValuation(
+    values.harmCapacity,
+    userResponses[8],
+    userResponses[9]
+  );
+  values.threatImpact = calculateImpact(values.impactValuation);
+
+  return values;
+};
+
 export const BinaryRiskMatrixForm = () => {
   const [Q1, appendQ1] = useState(false);
   const [Q2, appendQ2] = useState(false);
@@ -40,8 +60,10 @@ export const BinaryRiskMatrixForm = () => {
     const likelihoodResults = calculateLikelihood(values);
     const impactResults = calculateImpact(values);
 
-    appendHarmCapacity(impactResults[0]);
-    appendImpactValuation(impactResults[1]);
+    const calculatedValues = calculateValues(values);
+
+    appendHarmCapacity(calculatedValues.harmCapacity);
+    appendImpactValuation(calculatedValues.impactValuation);
 
     appendThreatScore(likelihoodResults[0]);
     appendProtectionWeakness(likelihoodResults[1]);
@@ -49,7 +71,7 @@ export const BinaryRiskMatrixForm = () => {
     appendOccurrence(likelihoodResults[3]);
 
     appendLikelihood(likelihoodResults[4]);
-    appendImpact(impactResults[2]);
+    appendImpact(calculatedValues.threatImpact);
 
     const risk = calculateRisk(likelihoodResults[4], impactResults[2]);
     appendRisk(risk);
