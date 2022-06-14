@@ -89,7 +89,7 @@ export const calculateAttackEfficiency = (protectionWeakness) => {
  * @param {boolean} Q6 The answer to Q6.
  * @returns {string} The threat occurrence
  */
-const calculateOccurrence = (attackEfficiency, Q5, Q6) => {
+export const calculateOccurrence = (attackEfficiency, Q5, Q6) => {
   if (Q5 === true && Q6 === true) {
     if (attackEfficiency === "Low") {
       return "Medium";
