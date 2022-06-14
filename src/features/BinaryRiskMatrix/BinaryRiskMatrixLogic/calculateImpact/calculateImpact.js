@@ -5,7 +5,7 @@
  */
 export const calculateImpact = (values) => {
   const harmCapacity = calculateHarmCapacity(values[6], values[7]);
-  const impactValuation = calculateImpactValidation(
+  const impactValuation = calculateImpactValuation(
     harmCapacity,
     values[8],
     values[9]
@@ -41,7 +41,7 @@ export const calculateHarmCapacity = (Q7, Q8) => {
  * @param {boolean} Q10 The value of question 10, as set by the user.
  * @returns {string} Impact Validation
  */
-export const calculateImpactValidation = (harmCapacity, Q9, Q10) => {
+export const calculateImpactValuation = (harmCapacity, Q9, Q10) => {
   if (Q9 === false && Q10 === false) {
     if (harmCapacity === "High") {
       return "Medium";
