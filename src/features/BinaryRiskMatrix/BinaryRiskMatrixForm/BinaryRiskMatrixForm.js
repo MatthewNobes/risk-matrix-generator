@@ -7,6 +7,10 @@ import calculateRisk from "../BinaryRiskMatrixLogic/calculateRisk";
 
 import { calculateHarmCapacity } from "../BinaryRiskMatrixLogic/calculateImpact/calculateHarmCapacity/calculateHarmCapacity";
 import { calculateImpactValuation } from "../BinaryRiskMatrixLogic/calculateImpact/calculateImpactValuation/calculateImpactValuation";
+import { calculateThreatScope } from "../BinaryRiskMatrixLogic/calculateLikelihood/calculateThreatScope/calculateThreatScope";
+import { calculateProtectionWeakness } from "../BinaryRiskMatrixLogic/calculateLikelihood/calculateProtectionWeakness/calculateProtectionWeakness";
+import { calculateAttackEfficiency } from "../BinaryRiskMatrixLogic/calculateLikelihood/calculateAttackEfficiency/calculateAttackEfficiency";
+import { calculateOccurrence } from "../BinaryRiskMatrixLogic/calculateLikelihood/calculateOccurrence/calculateOccurrence";
 
 const calculateValues = (userResponses) => {
   const values = {};
@@ -22,6 +26,26 @@ const calculateValues = (userResponses) => {
   );
   values.threatImpact = calculateImpact(values.impactValuation);
 
+  values.threatScore = calculateThreatScope(userResponses[0], userResponses[1]);
+  values.protectionWeakness = calculateProtectionWeakness(
+    values.threatScore,
+    userResponses[2],
+    userResponses[3]
+  );
+  values.attackEfficiency = calculateAttackEfficiency(
+    values.protectionWeakness
+  );
+  values.occurrence = calculateOccurrence(
+    values.attackEfficiency,
+    userResponses[4],
+    userResponses[5]
+  );
+  values.threatLikelihood = calculateLikelihood(values.occurrence);
+
+  values.threatRisk = calculateRisk(
+    values.threatLikelihood,
+    values.threatImpact
+  );
   return values;
 };
 
@@ -57,24 +81,18 @@ export const BinaryRiskMatrixForm = () => {
     e.preventDefault();
 
     const values = [Q1, Q2, Q3, Q4, Q5, Q6, Q7, Q8, Q9, Q10];
-    const likelihoodResults = calculateLikelihood(values);
-    const impactResults = calculateImpact(values);
 
     const calculatedValues = calculateValues(values);
 
     appendHarmCapacity(calculatedValues.harmCapacity);
     appendImpactValuation(calculatedValues.impactValuation);
-
-    appendThreatScore(likelihoodResults[0]);
-    appendProtectionWeakness(likelihoodResults[1]);
-    appendAttackEfficiency(likelihoodResults[2]);
-    appendOccurrence(likelihoodResults[3]);
-
-    appendLikelihood(likelihoodResults[4]);
+    appendThreatScore(calculatedValues.threatScore);
+    appendProtectionWeakness(calculatedValues.protectionWeakness);
+    appendAttackEfficiency(calculatedValues.attackEfficiency);
+    appendOccurrence(calculatedValues.occurrence);
+    appendLikelihood(calculatedValues.threatLikelihood);
     appendImpact(calculatedValues.threatImpact);
-
-    const risk = calculateRisk(likelihoodResults[4], impactResults[2]);
-    appendRisk(risk);
+    appendRisk(calculatedValues.threatRisk);
   };
 
   return (
