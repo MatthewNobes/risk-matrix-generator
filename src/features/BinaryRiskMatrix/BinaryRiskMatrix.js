@@ -33,18 +33,20 @@ export const BinaryRiskMatrix = () => {
   return (
     <div>
       <h1 className="PageTitle">Binary Risk Matrix</h1>
-      <BinaryRiskMatrixForm onSubmitFn={runCalculation} />
-      <ResultsPanel
-        risk={risk}
-        likelihood={likelihood}
-        threatScore={threatScore}
-        protectionWeakness={protectionWeakness}
-        attackEfficiency={attackEfficiency}
-        occurrence={occurrence}
-        impact={impact}
-        harmCapacity={harmCapacity}
-        impactValuation={impactValuation}
-      />
+      <div className="BinaryRiskMatrix">
+        <BinaryRiskMatrixForm onSubmitFn={runCalculation} />
+        <ResultsPanel
+          risk={risk}
+          likelihood={likelihood}
+          threatScore={threatScore}
+          protectionWeakness={protectionWeakness}
+          attackEfficiency={attackEfficiency}
+          occurrence={occurrence}
+          impact={impact}
+          harmCapacity={harmCapacity}
+          impactValuation={impactValuation}
+        />
+      </div>
     </div>
   );
 };
