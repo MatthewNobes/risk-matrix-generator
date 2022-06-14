@@ -53,7 +53,7 @@ export const calculateThreatScope = (Q1, Q2) => {
  * @param {boolean} Q4
  * @returns {string} The protection weakness
  */
-const calculateProtectionWeakness = (threatScore, Q3, Q4) => {
+export const calculateProtectionWeakness = (threatScore, Q3, Q4) => {
   if (Q3 === true && Q4 === true) {
     if (threatScore === "Low") {
       return "Medium";
