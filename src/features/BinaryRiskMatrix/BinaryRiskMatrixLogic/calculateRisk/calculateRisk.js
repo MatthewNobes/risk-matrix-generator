@@ -4,7 +4,7 @@
  * @param {string} threatImpact The threat impact.
  * @returns {string} The overall risk.
  */
-const calculateRisk = (threatLikelihood, threatImpact) => {
+export const calculateRisk = (threatLikelihood, threatImpact) => {
   if (threatImpact === threatLikelihood) {
     return threatLikelihood;
   } else {
