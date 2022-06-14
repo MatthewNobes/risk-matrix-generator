@@ -78,7 +78,7 @@ export const calculateProtectionWeakness = (threatScore, Q3, Q4) => {
  * @param {string} protectionWeakness The protection weakness (see calculateProtectionWeakness)
  * @returns {string} The attack efficiency
  */
-const calculateAttackEfficiency = (protectionWeakness) => {
+export const calculateAttackEfficiency = (protectionWeakness) => {
   return protectionWeakness;
 };
 
