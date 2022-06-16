@@ -1,3 +1,5 @@
+import css from "./ResultsPanel.module.css";
+
 export const ResultsPanel = (props) => {
   const {
     risk,
@@ -11,9 +13,8 @@ export const ResultsPanel = (props) => {
     impactValuation,
   } = props;
   return (
-    <div className="BinaryRiskMatrixResults">
+    <div className={css.ResultsPanel}>
       <h2
-        className="BinaryRiskMatrixResults-Measurement"
         style={{
           color:
             risk === "Low" ? "Green" : risk === "Medium" ? "Orange" : "Red",
@@ -23,7 +24,6 @@ export const ResultsPanel = (props) => {
       </h2>
 
       <h2
-        className="BinaryRiskMatrixResults-Measurement"
         style={{
           color:
             likelihood === "Low"
@@ -37,7 +37,6 @@ export const ResultsPanel = (props) => {
       </h2>
       <ul>
         <h3
-          className="BinaryRiskMatrixResults-Measurement"
           style={{
             color:
               threatScore === "Low"
@@ -50,7 +49,6 @@ export const ResultsPanel = (props) => {
           Threat Score: {threatScore}
         </h3>
         <h3
-          className="BinaryRiskMatrixResults-Measurement"
           style={{
             color:
               protectionWeakness === "Low"
@@ -63,7 +61,6 @@ export const ResultsPanel = (props) => {
           Protection Weakness: {protectionWeakness}
         </h3>
         <h3
-          className="BinaryRiskMatrixResults-Measurement"
           style={{
             color:
               attackEfficiency === "Low"
@@ -76,7 +73,6 @@ export const ResultsPanel = (props) => {
           Attack Efficiency: {attackEfficiency}
         </h3>
         <h3
-          className="BinaryRiskMatrixResults-Measurement"
           style={{
             color:
               occurrence === "Low"
@@ -91,7 +87,6 @@ export const ResultsPanel = (props) => {
       </ul>
 
       <h2
-        className="BinaryRiskMatrixResults-Measurement"
         style={{
           color:
             impact === "Low" ? "Green" : impact === "Medium" ? "Orange" : "Red",
@@ -101,7 +96,6 @@ export const ResultsPanel = (props) => {
       </h2>
       <ul>
         <h3
-          className="BinaryRiskMatrixResults-Measurement"
           style={{
             color:
               harmCapacity === "Low"
@@ -114,7 +108,6 @@ export const ResultsPanel = (props) => {
           Harm Capacity: {harmCapacity}
         </h3>
         <h3
-          className="BinaryRiskMatrixResults-Measurement"
           style={{
             color:
               impactValuation === "Low"
