@@ -1,3 +1,5 @@
+import css from "./Question.module.css";
+
 export const Question = (props) => {
   const question = props.question;
   const changeFn = props.changeFn;
@@ -5,7 +7,7 @@ export const Question = (props) => {
   const id = props.id;
 
   return (
-    <div className="BinaryRiskMatrixForm-CheckboxBlock" id={"Q" + id}>
+    <div className={css.Question} id={"Q" + id}>
       <input type="checkbox" id={id} value={value} onChange={changeFn} />
       <label htmlFor={id}>{question}</label>
     </div>
