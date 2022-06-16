@@ -98,6 +98,7 @@ export const BinaryRiskMatrixForm = (props) => {
       {questionDetails.map((question) => {
         return (
           <Question
+            key={question.questionNumber}
             value={question.value}
             id={question.questionNumber}
             changeFn={question.changeFn}

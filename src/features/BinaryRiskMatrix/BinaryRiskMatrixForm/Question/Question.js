@@ -5,9 +5,9 @@ export const Question = (props) => {
   const id = props.id;
 
   return (
-    <div className="BinaryRiskMatrixForm-CheckboxBlock">
+    <div className="BinaryRiskMatrixForm-CheckboxBlock" id={"Q" + id}>
       <input type="checkbox" id={id} value={value} onChange={changeFn} />
-      <label for={id}>{question}</label>
+      <label htmlFor={id}>{question}</label>
     </div>
   );
 };
