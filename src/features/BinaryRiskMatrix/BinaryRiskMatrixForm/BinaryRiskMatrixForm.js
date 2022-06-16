@@ -1,6 +1,7 @@
 import { useState } from "react";
 import "../../../css/App.css";
 import Question from "./Question";
+import css from "./BinaryRiskMatrixForm.module.css";
 
 export const BinaryRiskMatrixForm = (props) => {
   const [Q1, appendQ1] = useState(false);
@@ -94,7 +95,7 @@ export const BinaryRiskMatrixForm = (props) => {
   };
 
   return (
-    <form className="BinaryRiskMatrixForm" onSubmit={(e) => handleSubmit(e)}>
+    <form className={css.Form} onSubmit={(e) => handleSubmit(e)}>
       {questionDetails.map((question) => {
         return (
           <Question
@@ -106,8 +107,8 @@ export const BinaryRiskMatrixForm = (props) => {
           />
         );
       })}
-      <div className="BinaryRiskMatrixForm-Submit">
-        <button className="BinaryRiskMatrixForm-SubmitButton" type="submit">
+      <div className={css.Submit}>
+        <button className={css.SubmitButton} type="submit">
           Submit
         </button>
       </div>

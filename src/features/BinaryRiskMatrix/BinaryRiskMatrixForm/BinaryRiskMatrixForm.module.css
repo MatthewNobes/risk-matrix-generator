@@ -1,0 +1,12 @@
+.Form {
+  text-align: left;
+}
+
+.Submit {
+  text-align: center;
+}
+
+.SubmitButton {
+  height: 2em;
+  width: 6em;
+}

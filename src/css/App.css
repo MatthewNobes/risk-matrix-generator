@@ -9,19 +9,6 @@
   padding: 5vh 10vw 0vh 10vw;
 }
 
-.BinaryRiskMatrixForm {
-  text-align: left;
-}
-
-.BinaryRiskMatrixForm-Submit {
-  text-align: center;
-}
-
-.BinaryRiskMatrixForm-SubmitButton {
-  height: 2em;
-  width: 6em;
-}
-
 .BinaryRiskMatrixResults {
   text-align: left;
 }
